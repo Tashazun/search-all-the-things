@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { search } from '../services/rickAndMortyApi';
 import Search from './Search';
-import Paging from './Paging';
+// import Paging from './Paging';
 import Character from './Character';
 import Characters from './Characters';
 
@@ -23,8 +23,8 @@ export default class App extends Component {
         this.setState({ loading: true });
         
         search({ name }, { page, perPage })
-          .then(({ characters, totalResults }) => {
-            this.setState({ characters, totalResults, error: null });
+          .then((body) => {
+            this.setState({ characters: body.results, totalResults: body.results.length, error: null });
           }, error => {
             this.setState({ error });
           })
@@ -33,11 +33,11 @@ export default class App extends Component {
       };
 
       handleSearch = ({ search }) => {
-        this.setState({ topic: search }, this.searchNews);
+        this.setState({ name: search }, this.searchCharacters);
       };
     
       handlePage = ({ page }) => {
-        this.setState({ page }, this.searchNews);
+        this.setState({ page }, this.searchCharacters);
       };
 
     render() {
@@ -60,11 +60,11 @@ export default class App extends Component {
                 {error && <div>Error :( {error.message}</div>}
               </section>
               <section>
-                <Paging 
+                {/* <Paging 
                   totalResults={totalResults}
                   page={page}
                   perPage={perPage}
-                  onPage={this.handlePage}/>
+                  onPage={this.handlePage}/> */}
                 <Characters characters={characters}/>
               </section>
             
