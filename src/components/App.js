@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { search } from '../services/rickAndMortyApi';
 import Search from './Search';
-// import Paging from './Paging';
-import Character from './Character';
+import Paging from './Paging';
 import Characters from './Characters';
 
 export default class App extends Component {
@@ -11,20 +10,19 @@ export default class App extends Component {
         name: '',
         loading: false,
         error: null,
-        totalResults: 0,
+        totalResults: null,
         page: 1,
-        perPage: 20,
         characters: []
       };
 
       searchCharacters = () => {
-        const { name, page, perPage } = this.state;
+        const { name, page } = this.state;
     
         this.setState({ loading: true });
         
-        search({ name }, { page, perPage })
+        search({ name }, { page })
           .then((body) => {
-            this.setState({ characters: body.results, totalResults: body.results.length, error: null });
+            this.setState({ characters: body.results, totalResults: body.info.count, error: null });
           }, error => {
             this.setState({ error });
           })
@@ -41,7 +39,7 @@ export default class App extends Component {
       };
 
     render() {
-        const { characters, loading, totalResults, page, perPage, error } = this.state;
+        const { name, characters, loading, totalResults, page, error } = this.state;
 
 
         return (
@@ -60,11 +58,10 @@ export default class App extends Component {
                 {error && <div>Error :( {error.message}</div>}
               </section>
               <section>
-                {/* <Paging 
+                { <Paging 
                   totalResults={totalResults}
                   page={page}
-                  perPage={perPage}
-                  onPage={this.handlePage}/> */}
+                  onPage={this.handlePage}/> }
                 <Characters characters={characters}/>
               </section>
             
