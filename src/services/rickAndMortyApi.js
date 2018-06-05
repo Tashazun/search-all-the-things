@@ -1,6 +1,5 @@
 const BASE_URL = 'https://rickandmortyapi.com/api/';
 const CHARACTER_URL = 'character/';
-const EPISODE_URL = 'episode/';
 
 const get = url => fetch(url)
   .then(response => response.json())
@@ -11,7 +10,6 @@ export function checkResponseData(response) {
   return response;
 }
 
-// *Character Specific Search
 export function searchCharacters({ search }, { page = 1 }) {
   const query = `?name=${search}`;
   const paging = `page=${page}`;
@@ -20,17 +18,5 @@ export function searchCharacters({ search }, { page = 1 }) {
 }
 export function getCharacter(id) {
   const url = `${BASE_URL}${CHARACTER_URL}${id}`;
-  return get(url);
-}
-
-// *Episode Specific Search
-export function searchEpisodes({ search }, { page = 1 }) {
-  const query = `?episode=${search}`;
-  const paging = `page=${page}`;
-
-  return  get(`${BASE_URL}${EPISODE_URL}${query}&${paging}`);
-}
-export function getEpisode(id) {
-  const url = `${BASE_URL}${EPISODE_URL}${id}`;
   return get(url);
 }

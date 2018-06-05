@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Paging from '../paging/Paging';
-import { search } from '../../services/movieApi';
+import Character from '../characters/Character';
+import { search } from '../../services/rickAndMortyApi';
 import SearchForm from './SearchForm';
 import PropTypes from 'prop-types';
 import queryString from 'query-string';

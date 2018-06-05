@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
 import Header from './Header';
-import Home from '../home/Home';
-import Characters from '../characters/Characters';
+import Home from './Home';
+import Search from '../search/Search';
 import CharacterDetail from '../characters/CharacterDetail';
 
 export default class App extends Component {
@@ -16,10 +16,10 @@ export default class App extends Component {
             <main>
               <Switch>
                 <Route exact path="/" component={Home}/>
+                <Route path="/search" component={Search}/>
                 <Route path="/characters/:id" render={({ match }) => {
                   return <CharacterDetail characterID={match.params.id}/>;
                 }}/>
-                <Route path="/characters" component={Characters}/>
                 <Redirect to="/"/>
               </Switch>
             </main>
