@@ -7,13 +7,13 @@ import Characters from './Characters';
 export default class App extends Component {
 
     state = {
-        name: '',
-        loading: false,
-        error: null,
-        totalResults: null,
-        page: 1,
-        characters: []
-      };
+      name: '',
+      loading: false,
+      error: null,
+      totalResults: null,
+      page: 1,
+      characters: []
+    };
 
       searchCharacters = () => {
         const { name, page } = this.state;
@@ -38,12 +38,12 @@ export default class App extends Component {
         this.setState({ page }, this.searchCharacters);
       };
 
-    render() {
-        const { name, characters, loading, totalResults, page, error } = this.state;
+      render() {
+        const { characters, loading, totalResults, page, error } = this.state;
 
 
         return (
-            <div>
+          <div>
             <header>
               <div className="header-container">
                 <h1>Rick and Morty Characters</h1>
@@ -69,4 +69,4 @@ export default class App extends Component {
           </div>
         );
       }
-    };
+}
