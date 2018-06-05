@@ -10,10 +10,10 @@ export function checkResponseData(response) {
   return response;
 }
 
-export function search({ search }, { page = 1 }) {
+export function searchCharacter(search, page = 1) {
   const query = `?name=${search}`;
   const paging = `page=${page}`;
-
+  console.log('search', search, page);
   return  get(`${BASE_URL}${CHARACTER_URL}${query}&${paging}`);
 }
 export function getCharacter(id) {

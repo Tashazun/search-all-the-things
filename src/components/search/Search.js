@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Paging from '../paging/Paging';
-import Character from '../characters/Character';
+import Characters from '../characters/Characters';
 import { searchCharacter } from '../../services/rickAndMortyApi';
 import SearchForm from './SearchForm';
 import PropTypes from 'prop-types';
@@ -25,7 +25,7 @@ export default class Search extends Component {
     this.searchFromQuery(this.props.location.search);
   }
 
-  componentDidUpdate({ location }) {
+  componentWillReceiveProps({ location }) {
     const next = getSearch(location);
     const current = getSearch(this.props.location);
     if(current === next) return;
@@ -40,8 +40,8 @@ export default class Search extends Component {
     if(!searchName) return;
 
     searchCharacter(searchName, page)
-      .then(({ Search }) => {
-        this.setState({ characters: Search });
+      .then(({ search }) => {
+        this.setState({ characters: search });
       })
       .catch(error => {
         this.setState({ error });
@@ -81,13 +81,13 @@ export default class Search extends Component {
  
   render() {
     const { characters, error, searchName, page } = this.state;
-
+    console.log(characters);
     return (
       <div>
         <SearchForm searchName={searchName} onSearch={this.handleSearch}/>
         {error && <div>{error}</div>}
         <Paging page={page} onPage={this.handlePage}/>
-        {(!error && characters) && <Character characters={characters}/>}
+        {(!error && characters) && <Characters characters={characters}/>}
       </div>
     );
   }
