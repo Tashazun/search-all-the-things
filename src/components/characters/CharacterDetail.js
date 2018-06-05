@@ -32,7 +32,7 @@ export default class MovieDetail extends Component {
     if(character === null) return null;
 
     return (
-      <article className={styles['character-detail']}>
+      <article>
         <div className="container">
           { <a href="" onClick={this.handleBack}>Back</a> }
           <h2>{character.name}</h2>
@@ -40,10 +40,10 @@ export default class MovieDetail extends Component {
           <h3>{character.id}</h3>
           <h3>{character.species}</h3>
           <ul>
-              <li>{character.status}</li>
-              <li>{character.gender}</li>
-              <li>{character.origin.name}</li>
-              <li>{character.location.name}</li>
+            <li>{character.status}</li>
+            <li>{character.gender}</li>
+            <li>{character.origin.name}</li>
+            <li>{character.location.name}</li>
           </ul>
         </div>
       </article>

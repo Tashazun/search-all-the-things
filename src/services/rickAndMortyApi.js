@@ -3,14 +3,14 @@ const CHARACTER_URL = 'character/';
 
 const get = url => fetch(url)
   .then(response => response.json())
-  .then(checkResponseData)
+  .then(checkResponseData);
   
 export function checkResponseData(response) {
   if(response.Response === 'False') throw response.Error;
   return response;
 }
 
-export function searchCharacter({ search }, { page = 1 }) {
+export function search({ search }, { page = 1 }) {
   const query = `?name=${search}`;
   const paging = `page=${page}`;
 

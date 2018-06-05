@@ -12,7 +12,7 @@ export default class SearchForm extends Component {
     current: this.props.searchName || ''
   };
 
-  componentWillReceiveProps({ searchName }) {
+  componentDidUpdate({ searchName }) {
     if(searchName !== this.state.current) {
       this.setState({ current: searchName || '' });
     }
@@ -20,7 +20,7 @@ export default class SearchForm extends Component {
 
   handleChange = ({ target }) => {
     this.setState({ current: target.value });
-    console.log('Morty', this.state);
+    console.log('Morty', target.value);
   };
 
   handleSubmit = event => {

@@ -8,23 +8,23 @@ import CharacterDetail from '../characters/CharacterDetail';
 export default class App extends Component {
 
  
-    render() {
-      return (
-        <Router>
-          <div>
-            <Header />
-            <main>
-              <Switch>
-                <Route exact path="/" component={Home}/>
-                <Route path="/search" component={Search}/>
-                <Route path="/characters/:id" render={({ match }) => {
-                  return <CharacterDetail characterID={match.params.id}/>;
-                }}/>
-                <Redirect to="/"/>
-              </Switch>
-            </main>
-          </div>
-        </Router>
-      );
-    }
+  render() {
+    return (
+      <Router>
+        <div>
+          <Header />
+          <main>
+            <Switch>
+              <Route exact path="/" component={Home}/>
+              <Route path="/search" component={Search}/>
+              <Route path="/characters/:id" render={({ match }) => {
+                return <CharacterDetail characterID={match.params.id}/>;
+              }}/>
+              <Redirect to="/"/>
+            </Switch>
+          </main>
+        </div>
+      </Router>
+    );
   }
+}

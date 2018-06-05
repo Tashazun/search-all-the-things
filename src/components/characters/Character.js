@@ -16,8 +16,8 @@ export default class Character extends Component {
     return (
       <li>
         <Link to={`/characters/${id}`}>
-        <h2>{name}</h2>
-        <img src={image}/>
+          <h2>{name}</h2>
+          <img src={image}/>
         </Link>
       </li>
     );

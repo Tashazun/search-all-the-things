@@ -12,10 +12,10 @@ module.exports = {
     filename: 'bundle.[hash].js',
     publicPath: '/'
   },
-devServer: {
+  devServer: {
     contentBase: './${buildDir}',
     historyApiFallback: true,
-},
+  },
   devtool: 'inline-source-map',
   plugins: [
     new CleanWebpackPlugin(`${path}/bundle.*.js`), 

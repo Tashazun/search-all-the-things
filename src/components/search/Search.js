@@ -25,13 +25,14 @@ export default class Search extends Component {
     this.searchFromQuery(this.props.location.search);
   }
 
-  componentWillReceiveProps({ location }) {
+  componentDidUpdate({ location }) {
     const next = getSearch(location);
     const current = getSearch(this.props.location);
     if(current === next) return;
+
     this.searchFromQuery(next);
   }
-  
+
   searchFromQuery(query) {
     const { search: searchName, page } = queryString.parse(query);
 
@@ -52,18 +53,19 @@ export default class Search extends Component {
     const { searchName, page } = this.state;
     
     const query = {
-      search: searchName || '',
+      name: searchName || '',
       page: page || 1
-    }
+    };
 
     this.props.history.push({
       search: queryString.stringify(query)
     });
   };
 
-  handleSearch = name => {
+  handleSearch = searchName => {
     this.setState({ 
       error: null,
+      searchName,
       page: 1
     }, this.makeSearch);
   };
@@ -73,7 +75,7 @@ export default class Search extends Component {
       error: null,
       page
     }, this.makeSearch);
-  }
+  };
   
 
  
@@ -82,10 +84,10 @@ export default class Search extends Component {
 
     return (
       <div>
-        <SearchForm name={name} onSearch={this.handleSearch}/>
+        <SearchForm searchName={searchName} onSearch={this.handleSearch}/>
         {error && <div>{error}</div>}
         <Paging page={page} onPage={this.handlePage}/>
-        {(!error && characters) && <Characters characters={characters}/>}
+        {(!error && characters) && <Character characters={characters}/>}
       </div>
     );
   }
