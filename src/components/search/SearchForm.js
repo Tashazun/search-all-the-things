@@ -37,7 +37,7 @@ export default class SearchForm extends Component {
     const { current } = this.state;
 
     return (
-      <form className={styles.search} onSubmit={this.handleSubmit}>
+      <form onSubmit={this.handleSubmit}>
         <fieldset>
           <label>
             Squanch for Rick and Morty Characters: <input value={current} 

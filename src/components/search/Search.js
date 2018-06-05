@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Paging from '../paging/Paging';
 import Character from '../characters/Character';
-import { search } from '../../services/rickAndMortyApi';
+import { searchCharacter } from '../../services/rickAndMortyApi';
 import SearchForm from './SearchForm';
 import PropTypes from 'prop-types';
 import queryString from 'query-string';
@@ -38,9 +38,9 @@ export default class Search extends Component {
     this.setState({ name, page: +page });
     if(!name) return;
 
-    search(name, page)
-      .then(({ Search }) => {
-        this.setState({ characters: Search });
+    searchCharacter(name, page)
+      .then(({ search }) => {
+        this.setState({ characters: search });
       })
       .catch(error => {
         this.setState({ error });

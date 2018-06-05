@@ -10,11 +10,11 @@ export function checkResponseData(response) {
   return response;
 }
 
-export function searchCharacters({ search }, { page = 1 }) {
+export function searchCharacter({ search }, { page = 1 }) {
   const query = `?name=${search}`;
   const paging = `page=${page}`;
 
-  return  get(`${BASE_URL}${CHARACTERS_URL}${query}&${paging}`);
+  return  get(`${BASE_URL}${CHARACTER_URL}${query}&${paging}`);
 }
 export function getCharacter(id) {
   const url = `${BASE_URL}${CHARACTER_URL}${id}`;
