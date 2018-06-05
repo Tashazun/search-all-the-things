@@ -3,12 +3,12 @@ import React, { Component } from 'react';
 export default class Paging extends Component {
 
   handlePage(increment) {
-    const { page, onPage } = this.props;
+    const { page, onPage } = this.props; //eslint-disable-line
     onPage({ page: page + increment });
   }
 
   render() {
-    const { totalResults, page } = this.props;
+    const { totalResults, page } = this.props; //eslint-disable-line
     
     if(!totalResults) return <div>Squanch a name</div>;
 

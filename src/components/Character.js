@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 export default class Character extends Component {
 
   render() {
-    const { name, status, species, image, url } = this.props.character;
+    const { name, status, species, image, url } = this.props.character; //eslint-disable-line
     
     return (
       <li>

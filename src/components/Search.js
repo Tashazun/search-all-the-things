@@ -13,7 +13,7 @@ export default class Search extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    this.props.onSearch(this.state);
+    this.props.onSearch(this.state); //eslint-disable-line
   };
 
   render() {

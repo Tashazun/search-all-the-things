@@ -4,7 +4,7 @@ import Character from './Character';
 export default class Characters extends Component {
 
   render() {
-    const { characters } = this.props;
+    const { characters } = this.props; //eslint-disable-line
 
     return (
       <ul>
