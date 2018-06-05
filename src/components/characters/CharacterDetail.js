@@ -7,7 +7,7 @@ import { getCharacter } from '../../services/rickAndMortyApi';
 export default class MovieDetail extends Component {
 
   static propTypes = {
-    id: PropTypes.string.isRequired,
+    id: PropTypes.number.isRequired,
     history: PropTypes.object
   };
 

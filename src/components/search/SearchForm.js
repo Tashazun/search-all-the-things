@@ -4,22 +4,23 @@ import PropTypes from 'prop-types';
 export default class SearchForm extends Component {
 
   static propTypes = {
-    searchTerm: PropTypes.string,
+    searchName: PropTypes.string,
     onSearch: PropTypes.func.isRequired
   };
 
   state = {
-    current: this.props.searchTerm || ''
+    current: this.props.searchName || ''
   };
 
-  componentWillReceiveProps({ searchTerm }) {
-    if(searchTerm !== this.state.current) {
-      this.setState({ current: searchTerm || '' });
+  componentWillReceiveProps({ searchName }) {
+    if(searchName !== this.state.current) {
+      this.setState({ current: searchName || '' });
     }
   }
 
   handleChange = ({ target }) => {
     this.setState({ current: target.value });
+    console.log('Morty', this.state);
   };
 
   handleSubmit = event => {

@@ -16,7 +16,7 @@ export default class Search extends Component {
   };
 
   state = {
-    name: '',
+    searchName: '',
     error: null,
     characters: null,
     page: 1
@@ -33,14 +33,14 @@ export default class Search extends Component {
   }
   
   searchFromQuery(query) {
-    const { search: name, page } = queryString.parse(query);
+    const { search: searchName, page } = queryString.parse(query);
 
-    this.setState({ name, page: +page });
-    if(!name) return;
+    this.setState({ searchName, page: +page });
+    if(!searchName) return;
 
-    searchCharacter(name, page)
-      .then(({ search }) => {
-        this.setState({ characters: search });
+    searchCharacter(searchName, page)
+      .then(({ Search }) => {
+        this.setState({ characters: Search });
       })
       .catch(error => {
         this.setState({ error });
@@ -49,10 +49,10 @@ export default class Search extends Component {
 
   makeSearch = () => {
     this.setState({ error: null });
-    const { name, page } = this.state;
+    const { searchName, page } = this.state;
     
     const query = {
-      search: name || '',
+      search: searchName || '',
       page: page || 1
     }
 
@@ -64,7 +64,6 @@ export default class Search extends Component {
   handleSearch = name => {
     this.setState({ 
       error: null,
-      name,
       page: 1
     }, this.makeSearch);
   };
@@ -79,7 +78,7 @@ export default class Search extends Component {
 
  
   render() {
-    const { characters, error, name, page } = this.state;
+    const { characters, error, searchName, page } = this.state;
 
     return (
       <div>
