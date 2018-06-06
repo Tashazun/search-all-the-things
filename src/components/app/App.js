@@ -17,8 +17,8 @@ export default class App extends Component {
             <Switch>
               <Route exact path="/" component={Home}/>
               <Route path="/search" component={Search}/>
-              <Route path="/characters/:id" render={({ match }) => {
-                return <CharacterDetail characterID={match.params.id}/>;
+              <Route path="/characters/:id" render={({ match, history }) => {
+                return <CharacterDetail id={match.params.id} history={history}/>;
               }}/>
               <Redirect to="/"/>
             </Switch>

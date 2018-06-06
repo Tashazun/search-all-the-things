@@ -4,15 +4,15 @@ import { getCharacter } from '../../services/rickAndMortyApi';
 
 // import { Link } from 'react-router-dom';
 
-export default class MovieDetail extends Component {
+export default class CharacterDetail extends Component {
 
   static propTypes = {
-    id: PropTypes.number.isRequired,
+    id: PropTypes.string.isRequired,
     history: PropTypes.object
   };
 
   state = {
-    movie: null
+    character: null
   };
 
   componentDidMount() {
